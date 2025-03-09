@@ -1,17 +1,17 @@
 export const evidences = [
-    "EMF 5",
-    "Ultraviolet",
-    "Ghost Writing",
-    "Freezing Temperatures",
+    "EMF Level 5",
     "D.O.T.S Projector",
+    "Ultraviolet",
     "Ghost Orb",
+    "Ghost Writing",
     "Spirit Box",
+    "Freezing Temperatures",
 ];
 
 export const ghosts = [
     {
         name: "Spirit",
-        evidences: ["EMF 5", "Spirit Box", "Ghost Writing"],
+        evidences: ["EMF Level 5", "Spirit Box", "Ghost Writing"],
         description: "Spirits are very common ghosts. They are very powerful, but passive, only attacking when they need to. They defend their place of death to the utmost degree killing anyone that is caught overstaying their welcome.",
         strength: "Unlike other ghosts, Spirit posssesses no distinguishable strength.",
         weakness: "A Spirit can be temporarily stopped by burning Incense near them."
@@ -19,7 +19,7 @@ export const ghosts = [
 
     {
         name: "Wraith",
-        evidences: ["EMF 5", "Spirit Box", "D.O.T.S Projector"],
+        evidences: ["EMF Level 5", "Spirit Box", "D.O.T.S Projector"],
         description: "Wraiths are one of the most dangerous ghosts you will find. It is also the only known ghost that has the ability of flight and has sometimes been known to travel through walls.",
         strength: "Wraiths almost never touch the ground, meaning it can't be tracked by footsteps.",
         weakness: "Wraiths are afraid of Salt and will actively avoid it."
@@ -54,7 +54,7 @@ export const ghosts = [
 
     {
         name: "Jinn",
-        evidences: ["EMF 5", "Freezing Temperatures", "Ultraviolet"],
+        evidences: ["EMF Level 5", "Freezing Temperatures", "Ultraviolet"],
         description: "A Jinn is a territorial ghost that will attack when threatened. It has also been known to be able to travel at significant speed",
         strength: "A Jinn will travel at a faster speed if its victim is far away.",
         weakness: "Turning off the location's power source will prevent the Jinn from using its ability."
@@ -81,7 +81,7 @@ export const ghosts = [
 
     {
         name: "Shade",
-        evidences: ["EMF 5", "Ghost Writing", "Freezing Temperatures"],
+        evidences: ["EMF Level 5", "Ghost Writing", "Freezing Temperatures"],
         description: "A Shade is known to be very shy. There is evidence to suggest that a Shade will stop all paranormal activity if there are multiple people nearby.",
         strength: "Shades are much harder to find.",
         weakness: "The ghost will not enter a hunt if there are people nearby."
@@ -108,7 +108,7 @@ export const ghosts = [
 
     {
         name: "Oni",
-        evidences: ["EMF 5", "Freezing Temperatures", "D.O.T.S Projector"],
+        evidences: ["EMF Level 5", "Freezing Temperatures", "D.O.T.S Projector"],
         description: "Onis love to scare their victims as much as possible before attacking. They are often seen in their physical form, guarding their place of death.",
         strength: "Oni are more active whilst people are nearby and will drain their sanity faster when manifesting.",
         weakness: "Oni disappear less often while hunting their prey."
@@ -135,7 +135,7 @@ export const ghosts = [
 
     {
         name: "Goryo",
-        evidences: ["Ultraviolet", "EMF 5", "D.O.T.S Projector"],
+        evidences: ["Ultraviolet", "EMF Level 5", "D.O.T.S Projector"],
         description: "When a Goryo passes through a DOTS projector, using a video camera is the only way to see it.",
         strength: "A Goryo will usually only show itself on camera if there are no people nearby.",
         weakness: "They are rarely seen far from their place of death."
@@ -144,7 +144,7 @@ export const ghosts = [
 
     {
         name: "Myling",
-        evidences: ["EMF 5", "Ultraviolet", "Ghost Writing"],
+        evidences: ["EMF Level 5", "Ultraviolet", "Ghost Writing"],
         description: "A Myling is a very vocal and active ghost. They are rumoured to be quiet when hunting their prey",
         strength: "A Myling is known to be quieter when hunting.",
         weakness: "Mylings make more frequent paranormal sounds."
@@ -162,7 +162,7 @@ export const ghosts = [
 
     {
         name: "The Twins",
-        evidences: ["EMF 5", "Freezing Temperatures", "Spirit Box"],
+        evidences: ["EMF Level 5", "Freezing Temperatures", "Spirit Box"],
         description: "These ghosts have been reported to mimic each other's actions. They alternate their attacks to confuse their prey.",
         strength: "Either Twin can be angered and initiate an attack on their prey.",
         weakness: "The Twins will often interact with the environment at the same time."
@@ -171,7 +171,7 @@ export const ghosts = [
 
     {
         name: "Raiju",
-        evidences: ["EMF 5", "D.O.T.S Projector", "Ghost Orb"],
+        evidences: ["EMF Level 5", "D.O.T.S Projector", "Ghost Orb"],
         description: "A Raiju is a demon that thrives on electrical current. While generally calm, they can become agitated when overwhelmed with power.",
         strength: "A Raiju can siphon power from nearby electrical devices, making it move faster.",
         weakness: "Raiju are constantly disrupting electronic equipment when attacking, making it easier to track."
@@ -180,7 +180,7 @@ export const ghosts = [
 
     {
         name: "Obake",
-        evidences: ["Ultraviolet", "Ghost Orb", "EMF 5"],
+        evidences: ["Ultraviolet", "Ghost Orb", "EMF Level 5"],
         description: "Obake are terrifying shape-shifters, capable of taking on many forms. They have been seen taking on humanoid shapes to attract their prey.",
         strength: "When interacting with the environment, an Obake will rarely leave a trace.",
         weakness: "Sometimes this ghost will shapeshift, leaving behind unique evidence."
