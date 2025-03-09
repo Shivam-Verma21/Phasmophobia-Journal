@@ -1,46 +1,14 @@
 "use client"
 import React, { useState } from "react";
 
-const evidences = [
-  "EMF 5",
-  "Ultraviolet",
-  "Ghost Writing",
-  "Freezing Temperatures",
-  "D.O.T.S Projector",
-  "Ghost Orb",
-  "Spirit Box",
-];
+import { evidences } from "./data/ghosts-data";
+import { ghosts } from "./data/ghosts-data";
 
-const ghosts = [
-  { name: "Spirit", evidences: ["EMF 5", "Spirit Box", "Ghost Writing"] },
-  { name: "Wraith", evidences: ["EMF 5", "Spirit Box", "D.O.T.S Projector"] },
-  { name: "Phantom", evidences: ["Ultraviolet", "D.O.T.S Projector", "Spirit Box"] },
-  { name: "Poltergeist", evidences: ["Ultraviolet", "Ghost Writing", "Spirit Box"] },
-  { name: "Banshee", evidences: ["Ultraviolet", "D.O.T.S Projector", "Ghost Orb"] },
-  { name: "Jinn", evidences: ["EMF 5", "Freezing Temperatures", "Ultraviolet"] },
-  { name: "Mare", evidences: ["Ghost Writing", "Ghost Orb", "Spirit Box"] },
-  { name: "Revenant", evidences: ["Ghost Writing", "Freezing Temperatures", "Ghost Orb"] },
-  { name: "Shade", evidences: ["EMF 5", "Ghost Writing", "Freezing Temperatures"] },
-  { name: "Demon", evidences: ["Freezing Temperatures", "Ghost Writing", "Ultraviolet"] },
-  { name: "Yurei", evidences: ["Freezing Temperatures", "Ghost Orb", "D.O.T.S Projector"] },
-  { name: "Oni", evidences: ["EMF 5", "Freezing Temperatures", "D.O.T.S Projector"] },
-  { name: "Yokai", evidences: ["D.O.T.S Projector", "Spirit Box", "Ghost Orb"] },
-  { name: "Hantu", evidences: ["Ultraviolet", "Freezing Temperatures", "Ghost Orb"] },
-  { name: "Goryo", evidences: ["Ultraviolet", "EMF 5", "D.O.T.S Projector"] },
-  { name: "Myling", evidences: ["EMF 5", "Ultraviolet", "Ghost Writing"] },
-  { name: "Onryo", evidences: ["Ghost Orb", "Freezing Temperatures", "Spirit Box"] },
-  { name: "The Twins", evidences: ["EMF 5", "Freezing Temperatures", "Spirit Box"] },
-  { name: "Raiju", evidences: ["EMF 5", "D.O.T.S Projector", "Ghost Orb"] },
-  { name: "Obake", evidences: ["Ultraviolet", "Ghost Orb", "EMF 5"] },
-  { name: "The Mimic", evidences: ["Ultraviolet", "Freezing Temperatures", "Spirit Box"] },
-  { name: "Moroi", evidences: ["Ghost Writing", "Freezing Temperatures", "Spirit Box"] },
-  { name: "Deogen", evidences: ["Ghost Writing", "D.O.T.S Projector", "Spirit Box"] },
-  { name: "Thaye", evidences: ["Ghost Writing", "D.O.T.S Projector", "Ghost Orb"] },
-];
-
-const GhostGuessingApp = () => {
+const Home = () => {
   const [selectedEvidences, setSelectedEvidences] = useState({});
+  const [ghostState, setGhostState] = useState({});
 
+  // Toggle Evidence States
   const toggleEvidence = (evidence) => {
     setSelectedEvidences((prev) => {
       if (!prev[evidence]) return { ...prev, [evidence]: "checked" };
@@ -51,6 +19,43 @@ const GhostGuessingApp = () => {
     });
   };
 
+  // Toggle Ghost States
+  const toggleGhost = (ghostName) => {
+    setGhostState((prev) => {
+      const newState = { ...prev };
+      const currentState = newState[ghostName];
+      const currentCircled = Object.keys(prev).find(name => prev[name] === 'circled');
+
+      // Handle clicks on different ghosts
+      if (ghostName !== currentCircled) {
+        // Clear existing circled ghost
+        if (currentCircled) delete newState[currentCircled];
+
+        // Handle clicked ghost's previous state
+        if (currentState === 'crossed') {
+          // Clear crossed state
+          delete newState[ghostName];
+        } else {
+          // Circle new ghost
+          newState[ghostName] = 'circled';
+        }
+      }
+      // Handle clicks on same ghost
+      else {
+        // Cycle through states
+        if (currentState === 'circled') {
+          newState[ghostName] = 'crossed';
+        } else if (currentState === 'crossed') {
+          delete newState[ghostName];
+        } else {
+          newState[ghostName] = 'circled';
+        }
+      }
+      return newState;
+    });
+  };
+
+  // Checking if ghost should be visible
   const isGhostVisible = (ghost) => {
     return Object.entries(selectedEvidences).every(([evidence, state]) => {
       if (state === "checked") return ghost.evidences.includes(evidence);
@@ -59,33 +64,57 @@ const GhostGuessingApp = () => {
     });
   };
 
-  // console.log(selectedEvidences);
-
   return (
-    <div className="app">
-      <h1>Ghost Guessing App</h1>
+    <main className="min-h-screen">
+      <div className="w-full mx-auto">
+        <nav className="pt-8 flex w-full mx-auto max-w-[28rem] sm:max-w-[32rem] lg:max-w-[64rem]">
+          <a href="/" className="evidence-link text-black px-4 py-1 rounded-t-xl font-medium text-[1.25rem] sm:text-2xl">Evidence</a>
+          <a href="/ghosts" className=" ghosts-link text-black px-4 py-1 rounded-t-xl font-medium text-[1.25rem] sm:text-2xl">Ghosts</a>
+        </nav>
 
-      <div className="evidence-list">
-        {evidences.map((evidence) => (
-          <button
-            key={evidence}
-            className={`evidence-btn ${selectedEvidences[evidence] || ""}`}
-            onClick={() => toggleEvidence(evidence)}
-          >
-            {evidence}
-          </button>
-        ))}
-      </div>
+        <div className="flex justify-center items-center">
+          <div className="page hidden ghost-types-page"></div>
 
-      <div className="ghost-list">
-        {ghosts.map((ghost) => (
-          <div key={ghost.name} className={`ghost ${isGhostVisible(ghost) ? "" : "blurred"}`}>
-            {ghost.name}
+          <div className="page flex flex-col evidence-page">
+            <span className="text-4xl sm:text-[2.5rem] font-medium leading-9 tracking-wider">Evidence</span>
+
+            <hr className="border-b-2 border-stone-900 my-2 rounded-[35%] w-full" />
+
+            <div className="evidence-list">
+              {evidences.map((evidence) => (
+                <label htmlFor=""
+                  key={evidence}
+                  className={`evidence-label cursor-pointer w-full relative flex items-center gap-3 ${selectedEvidences[evidence] || ""}`}
+                  onClick={() => toggleEvidence(evidence)}
+                >
+                  <input type="checkbox" name="" id="" className={`evidence-checkbox text-[1.25rem] sm:text-2xl ${selectedEvidences[evidence] || ""}`} />
+                  <span className="text-[1.25rem] sm:text-xl">{evidence}</span>
+                </label>
+              ))}
+            </div>
+
+            <hr className="border-b-2 border-stone-900 my-3 rounded-[35%] w-full" />
+
+            <div>
+              <div className="ghost-list">
+                {ghosts.map((ghost) => {
+                  return (
+                    <div
+                      key={ghost.name}
+                      className={`ghost text-[1.25rem] sm:text-2xl cursor-pointer ${isGhostVisible(ghost) ? "" : "blurred"} ${ghostState[ghost.name] || ""}`}
+                      onClick={() => toggleGhost(ghost.name)}
+                    >
+                      {ghost.name}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
-export default GhostGuessingApp;
+export default Home;
