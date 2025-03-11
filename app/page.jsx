@@ -1,5 +1,5 @@
-import Evidence from "./components/Evidence";
-import GhostTypes from "./components/GhostTypes";
+import Evidence from "@/components/Evidence";
+import GhostTypes from "@/components/GhostTypes";
 
 const Home = () => {
   return (
