@@ -11,6 +11,13 @@ body {
   font-family: "Lazy Dog", system-ui, sans-serif;
 }
 
+@media (max-width: 640px) {
+  body {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 .evidence-link,
 .ghosts-link {
   background-color: rgb(241, 222, 162);
@@ -26,10 +33,12 @@ body {
   max-width: 28rem;
   width: 100%;
   padding: 3rem 1rem;
+  /* height: 41rem; */
 }
 
 @media (min-width: 640px) {
   .page {
+    height: 47rem;
     max-width: 32rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -57,8 +66,16 @@ body {
   margin-top: 10px;
 }
 
+@media (max-width: 400px) {
+  .evidence-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+
 .evidence-checkbox {
-  border: 2px solid rgb(28 25 23);
+  border: 3px solid rgb(28 25 23);
   border-radius: 2px;
   cursor: pointer;
   width: 1.25rem;
@@ -88,9 +105,15 @@ body {
 .ghost-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 20px;
+  gap: 5px;
+  /* margin-top: 15px; */
   padding: 10px;
+}
+
+@media (max-width: 400px) {
+  .ghost-list {
+    padding: 0px;
+  }
 }
 
 @media (max-width: 40rem) {
@@ -106,6 +129,12 @@ body {
   transition: 0.3s;
   pointer-events: auto !important;
   position: relative;
+}
+
+@media (max-width: 400px) {
+  .ghost {
+    padding: 2px;
+  }
 }
 
 .ghost.crossed::after {

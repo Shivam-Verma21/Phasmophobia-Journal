@@ -85,6 +85,8 @@ export default function Evidence() {
 
             <hr className="border-b-2 border-stone-900 my-3 rounded-[35%] w-full" />
 
+            <h2 className="text-center text-xl sm:text-2xl leading-6 mx-auto mt-2">Using the evidence were found, we believe the ghost is a </h2>
+
             <div>
                 <div className="ghost-list">
                     {ghosts.map((ghost) => {
