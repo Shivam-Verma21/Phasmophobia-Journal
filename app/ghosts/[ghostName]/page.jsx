@@ -1,24 +1,26 @@
 import GhostTypes from "@/components/GhostTypes";
 import { ghosts } from "../../data/ghosts-data";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 const GhostPage = async ({ params }) => {
     const { ghostName } = params;
 
     if (!params?.ghostName) {
-        console.error("Missing ghostName parameter");
         return notFound();
     }
 
     const decodedName = decodeURIComponent(ghostName).toLowerCase();
+    const currentIndex = ghosts.findIndex(g => g.name.toLowerCase() === decodedName);
 
-    const ghost = ghosts.find(g =>
-        g.name.toLowerCase() === decodedName
-    );
-
-    if (!ghost) {
+    if (currentIndex === -1) {
         return notFound();
     }
+
+    // Calculate previous/next indices with wrap-around
+    const prevIndex = (currentIndex - 1 + ghosts.length) % ghosts.length;
+    const nextIndex = (currentIndex + 1) % ghosts.length;
+    const ghost = ghosts[currentIndex];
 
     return (
         <div className="flex justify-center items-center">
@@ -32,11 +34,26 @@ const GhostPage = async ({ params }) => {
 
                 <p className="text-xl sm:text-2xl leading-6 sm:leading-7 tracking-wider my-5">Weakeness: {ghost.weakness}</p>
 
-                <div className="flex flex-col gap-2 mt-auto absolute bottom-8">
-                    <p className="text-2xl sm:text-3xl font-medium leading-6 tracking-wider sm:leading-6">Evidence</p>
+                <div className="flex flex-col gap-2 mt-auto absolute bottom-16">
+                    <p className="text-2xl sm:text-3xl font-medium leading-6 tracking-wider sm:leading-6 mb-2">Evidence</p>
                     <p className="text-xl sm:text-2xl leading-6 tracking-wider sm:leading-6">{ghost.evidences[0]}</p>
                     <p className="text-xl sm:text-2xl leading-6 tracking-wider sm:leading-6">{ghost.evidences[1]}</p>
                     <p className="text-xl sm:text-2xl leading-6 tracking-wider sm:leading-6">{ghost.evidences[2]}</p>
+                </div>
+
+                <div className="flex justify-evenly w-full absolute bottom-2">
+                    <Link
+                        href={`/ghosts/${ghosts[prevIndex].name}`}
+                        className="text-xl rounded-lg transition-colors"
+                    >
+                        ← {ghosts[prevIndex].name}
+                    </Link>
+                    <Link
+                        href={`/ghosts/${ghosts[nextIndex].name}`}
+                        className="text-xl rounded-lg transition-colors"
+                    >
+                        {ghosts[nextIndex].name} →
+                    </Link>
                 </div>
             </div>
         </div>
