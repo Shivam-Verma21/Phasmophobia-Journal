@@ -32,7 +32,9 @@ const GhostPage = async ({ params }) => {
 
                 <p className="text-xl sm:text-2xl leading-6 sm:leading-7 tracking-wider my-4">{ghost.description}</p>
 
-                <p className="text-xl sm:text-2xl leading-6 sm:leading-7 tracking-wider my-5">Weakeness: {ghost.weakness}</p>
+                <p className="text-xl sm:text-2xl leading-6 sm:leading-7 tracking-wider my-7">Strength: {ghost.strength}</p>
+
+                <p className="text-xl sm:text-2xl leading-6 sm:leading-7 tracking-wider my-7">Weakeness: {ghost.weakness}</p>
 
                 <div className="flex flex-col gap-2 mt-auto absolute bottom-16">
                     <p className="text-2xl sm:text-3xl font-medium leading-6 tracking-wider sm:leading-6 mb-2">Evidence</p>
