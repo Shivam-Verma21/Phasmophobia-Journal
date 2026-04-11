@@ -1,16 +1,12 @@
-import Evidence from "@/components/Evidence";
-import GhostTypes from "@/components/GhostTypes";
+import Evidence from "../app/components/Evidence";
 
 const Home = () => {
   return (
-    <main className="min-h-screen">
       <div className="w-full mx-auto">
-        <div className="flex justify-center items-center">
-          <GhostTypes />
+        <div className="main-div flex justify-center items-center">
           <Evidence />
         </div>
       </div>
-    </main>
   );
 };
 

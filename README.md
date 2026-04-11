@@ -1,4 +1,5 @@
 # Phasmophobia Journal Clone
+This is an online journal from the game 'Phasmophobia'.
 
 ## Getting Started
 
