@@ -85,17 +85,19 @@ body {
 
 @media (max-width:440px){
   .page{
-    width: 27rem !important;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
-    margin-left: 2rem;
+    width: 100vw !important;
+    /* padding-left: 2rem !important;
+    padding-right: 2rem !important; */
+    /* margin-left: 2rem; */
+    margin-left: -3rem !important;
   }
   .main-div{
     width: 110vw;
   }
   .ghosts-page{
-    width: 110vw !important;
-    margin-left: 1rem !important;
+    width: 100vw !important;
+    margin-left: 0 !important;
+    /* margin-left: 1rem !important; */
   }
 }
 
