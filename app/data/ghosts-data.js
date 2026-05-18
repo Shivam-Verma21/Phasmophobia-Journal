@@ -10,6 +10,14 @@ export const evidences = [
 
 export const ghosts = [
     {
+        name: "Aswang",
+        evidences: ["Freezing Temperatures", "D.O.T.S Projector", "Ghost Writing"],
+        description: "Rumored to gorge itself on blood and corpses, the Aswang is feral yet capable of blending into urban environments.",
+        strength: "When they spot their target, Aswangs become faster in pursuit.",
+        weakness: "Aswangs prefer chasing over searching."
+
+    },
+    {
         name: "Banshee",
         evidences: ["Ultraviolet", "D.O.T.S Projector", "Ghost Orb"],
         description: "The singing siren, known for attracting its Victims through song. It has been known to single out its prey before making a killing blow.",
@@ -69,6 +77,14 @@ export const ghosts = [
         description: "A Jinn is a territorial ghost that will attack when threatened. It has also been known to be able to travel at significant speed",
         strength: "A Jinn will travel at a faster speed if its victim is far away.",
         weakness: "Turning off the location's power source will prevent the Jinn from using its ability."
+
+    },
+    {
+        name: "Kormos",
+        evidences: ["Ghost Orb", "Spirit Box", "Ultraviolet"],
+        description: "Translating to the one who 'does not see', the Kormos is blind but uses its heightened hearing to hunt down victims.",
+        strength: "Kormos have incredibly strong hearing.",
+        weakness: "Kormos are nearly blind."
 
     },
     {

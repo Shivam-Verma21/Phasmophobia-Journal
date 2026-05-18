@@ -4,7 +4,7 @@ import { ghosts } from "@/data/ghosts-data";
 import NotFound from "./NotFound";
 
 export default function Ghosts() {
-    const [selectedGhostName, setSelectedGhostName] = useState("Banshee");
+    const [selectedGhostName, setSelectedGhostName] = useState("Aswang");
 
     const ghost = ghosts.find(
         (g) => g.name.toLowerCase() === selectedGhostName.toLowerCase()
@@ -13,7 +13,7 @@ export default function Ghosts() {
     if (!ghost) return <NotFound />;
 
     return (
-        <div className="page flex ghosts-page">
+        <div className="page flex ghosts-page mx-auto">
             <div className="ghost-list-div pt-4">
                 <span className="text-2xl sm:text-[2rem] font-semibold leading-9 tracking-wider">Ghost Types</span>
 
@@ -22,6 +22,10 @@ export default function Ghosts() {
                 <h2 className="text-left text-xl sm:text-2xl leading-6 mx-auto mt-2 mb-4 tracking-wider">Select a ghost type below to view more information:</h2>
 
                 <div className="ghost-list">
+                    <div className={"ghost text-[1.25rem] sm:text-2xl cursor-pointer"}>
+                        <div onClick={() => setSelectedGhostName("Aswang")}>Aswang</div>
+                    </div>
+
                     <div className={"ghost text-[1.25rem] sm:text-2xl cursor-pointer"}>
                         <div onClick={() => setSelectedGhostName("Banshee")}>Banshee</div>
                     </div>
@@ -52,6 +56,10 @@ export default function Ghosts() {
 
                     <div className={"ghost text-[1.25rem] sm:text-2xl cursor-pointer"}>
                         <div onClick={() => setSelectedGhostName("Jinn")}>Jinn</div>
+                    </div>
+
+                    <div className={"ghost text-[1.25rem] sm:text-2xl cursor-pointer"}>
+                        <div onClick={() => setSelectedGhostName("Kormos")}>Kormos</div>
                     </div>
 
                     <div className={"ghost text-[1.25rem] sm:text-2xl cursor-pointer"}>
