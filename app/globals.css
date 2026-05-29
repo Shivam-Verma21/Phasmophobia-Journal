@@ -22,7 +22,6 @@ body {
 }
 
 .page {
-  background-image: url("./assets/background.png");
   background-color: #d8cbb8;
   color: black;
   box-shadow: inset 0 0 100px -10px #f2d97f;
