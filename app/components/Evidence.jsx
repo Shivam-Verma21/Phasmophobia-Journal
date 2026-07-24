@@ -4,7 +4,7 @@ import { ghosts } from "@/data/ghosts-data";
 
 export default function Evidence() {
     const [selectedEvidences, setSelectedEvidences] = useState({});
-    const [ghostState, setGhostState] = useState({});
+    const [ghostState, setGhostState] = useState({ Spirit: "circled" });
 
     const emf = "EMF Level 5";
     const dots = "D.O.T.S Projector";

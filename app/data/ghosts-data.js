@@ -34,6 +34,14 @@ export const ghosts = [
 
     },
     {
+        name: "Deidlegast",
+        evidences: ["EMF Level 5", "Ghost Writing", "D.O.T.S Projector"],
+        description: "Having tampered with other people's property in life, in death the Deidlegast is doomed to fixate on anything misplaced.",
+        strength: "At the beginning of an investigation, the Deidlegast has an upper hand.",
+        weakness: "Deidlegasts can be slowed down, by both the living and the dead."
+
+    },
+    {
         name: "Demon",
         evidences: ["Freezing Temperatures", "Ghost Writing", "Ultraviolet"],
         description: "A Demon is one of the worst ghosts you can encounter. It has been known to attack without reason.",

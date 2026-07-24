@@ -35,6 +35,10 @@ export default function Ghosts() {
                     </div>
 
                     <div className={"ghost text-[1.25rem] sm:text-2xl cursor-pointer"}>
+                        <div onClick={() => setSelectedGhostName("Deidlegast")}>Deidlegast</div>
+                    </div>
+
+                    <div className={"ghost text-[1.25rem] sm:text-2xl cursor-pointer"}>
                         <div onClick={() => setSelectedGhostName("Demon")}>Demon</div>
                     </div>
 
