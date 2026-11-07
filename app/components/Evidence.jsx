@@ -70,6 +70,15 @@ export default function Evidence() {
         });
     };
 
+    const [hoveredGhost, setHoveredGhost] = useState(null);
+
+    // Blur an evidence only while a ghost is hovered and the ghost doesn't have it
+    const isEvidenceBlurred = (evidence) => {
+        if (!hoveredGhost) return false;
+        const ghost = ghosts.find((g) => g.name === hoveredGhost);
+        return ghost ? !ghost.evidences.includes(evidence) : false;
+    };
+
     return (
         <div className="page flex gap-5 evidence-page">
             <div className="evidencediv1 mt-4">
@@ -78,7 +87,7 @@ export default function Evidence() {
                 <hr className="border-b-2 border-stone-900 my-2 w-sm" />
 
                 <div className="evidence-list">
-                    <div className={`evidence-label w-full relative block ${selectedEvidences[emf] || ""}`}>
+                    <div className={`evidence-label w-full relative block  ${selectedEvidences[emf] || ""} transition duration-100 ${isEvidenceBlurred(emf) ? "blur-[4px] opacity-40" : ""}`}>
                         <div
                             className="checkbox-and-text gap-5 px-3 cursor-pointer"
                             onClick={() => toggleEvidence(emf)}
@@ -89,7 +98,7 @@ export default function Evidence() {
                         <p className="font-semibold ml-10">Get a level 5 reading on the EMF Reader</p>
                     </div>
 
-                    <div className={`evidence-label w-full relative block ${selectedEvidences[dots] || ""}`}>
+                    <div className={`evidence-label w-full relative block ${selectedEvidences[dots] || ""} transition duration-100 ${isEvidenceBlurred(dots) ? "blur-[4px] opacity-40" : ""}`}>
                         <div
                             className="checkbox-and-text gap-5 px-3 cursor-pointer"
                             onClick={() => toggleEvidence(dots)}
@@ -100,7 +109,7 @@ export default function Evidence() {
                         <p className="font-semibold ml-10">Witness a ghostly disturbance within D.O.T.S Projector lights</p>
                     </div>
 
-                    <div className={`evidence-label w-full relative block ${selectedEvidences[uv] || ""}`}>
+                    <div className={`evidence-label w-full relative block ${selectedEvidences[uv] || ""} transition duration-100 ${isEvidenceBlurred(uv) ? "blur-[4px] opacity-40" : ""}`}>
                         <div
                             className="checkbox-and-text gap-5 px-3 cursor-pointer"
                             onClick={() => toggleEvidence(uv)}
@@ -111,7 +120,7 @@ export default function Evidence() {
                         <p className="font-semibold ml-10">Uncover finger, hand or footprints with the UV Light</p>
                     </div>
 
-                    <div className={`evidence-label w-full relative block ${selectedEvidences[freezing] || ""}`}>
+                    <div className={`evidence-label w-full relative block ${selectedEvidences[freezing] || ""} transition duration-100 ${isEvidenceBlurred(freezing) ? "blur-[4px] opacity-40" : ""}`}>
                         <div
                             className="checkbox-and-text gap-5 px-3 cursor-pointer"
                             onClick={() => toggleEvidence(freezing)}
@@ -122,7 +131,7 @@ export default function Evidence() {
                         <p className="font-semibold ml-10">Get a reading below 0°C/ 32°F on a Thermometer</p>
                     </div>
 
-                    <div className={`evidence-label w-full relative block ${selectedEvidences[orbs] || ""}`}>
+                    <div className={`evidence-label w-full relative block ${selectedEvidences[orbs] || ""} transition duration-100 ${isEvidenceBlurred(orbs) ? "blur-[4px] opacity-40" : ""}`}>
                         <div
                             className="checkbox-and-text gap-5 px-3 cursor-pointer"
                             onClick={() => toggleEvidence(orbs)}
@@ -133,7 +142,7 @@ export default function Evidence() {
                         <p className="font-semibold ml-10">See floating orbs on video (through Video Camera, Video Feed or Head Gear)</p>
                     </div>
 
-                    <div className={`evidence-label w-full relative block ${selectedEvidences[writing] || ""}`}>
+                    <div className={`evidence-label w-full relative block ${selectedEvidences[writing] || ""} transition duration-100 ${isEvidenceBlurred(writing) ? "blur-[4px] opacity-40" : ""}`}>
                         <div
                             className="checkbox-and-text gap-5 px-3 cursor-pointer"
                             onClick={() => toggleEvidence(writing)}
@@ -144,7 +153,7 @@ export default function Evidence() {
                         <p className="font-semibold ml-10">Have a ghost write in a Ghost Writing Book that's been placed down</p>
                     </div>
 
-                    <div className={`evidence-label w-full relative block ${selectedEvidences[spiritbox] || ""}`}>
+                    <div className={`evidence-label w-full relative block ${selectedEvidences[spiritbox] || ""} transition duration-100 ${isEvidenceBlurred(spiritbox) ? "blur-[4px] opacity-40" : ""}`}>
                         <div
                             className="checkbox-and-text gap-5 px-3 cursor-pointer"
                             onClick={() => toggleEvidence(spiritbox)}
@@ -180,6 +189,10 @@ export default function Evidence() {
                                             toggleGhost(ghost.name);
                                         }
                                     }}
+                                    onMouseEnter={() => {
+                                        if (isGhostVisible(ghost)) setHoveredGhost(ghost.name);
+                                    }}
+                                    onMouseLeave={() => setHoveredGhost(null)}
                                 >
                                     {ghost.name}
                                 </div>
