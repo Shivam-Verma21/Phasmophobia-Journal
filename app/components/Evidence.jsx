@@ -72,7 +72,7 @@ export default function Evidence() {
 
     const [hoveredGhost, setHoveredGhost] = useState(null);
 
-    // Blur an evidence only while a ghost is hovered and the ghost doesn't have it
+    // Blur the evidences which a ghost doesn't have when it is hovered
     const isEvidenceBlurred = (evidence) => {
         if (!hoveredGhost) return false;
         const ghost = ghosts.find((g) => g.name === hoveredGhost);
